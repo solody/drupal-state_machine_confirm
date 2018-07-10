@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * @file
+ * Contains state_machine_confirm.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\state_machine\Form\StateTransitionForm;
+
+/**
+ * Implements hook_help().
+ */
+function state_machine_confirm_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the state_machine_confirm module.
+    case 'help.page.state_machine_confirm':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('My Awesome Module') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+
+/**
+ * Implements hook_form_alter().
+ */
+function state_machine_confirm_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  $formObject = $form_state->getFormObject();
+  if ($formObject instanceof StateTransitionForm) {
+    $form['#attached']['library'][] = 'state_machine_confirm/state-machine-confirm';
+  }
+}

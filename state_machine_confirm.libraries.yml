@@ -1,0 +1,6 @@
+state-machine-confirm:
+  js:
+    js/state-machine-confirm.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
